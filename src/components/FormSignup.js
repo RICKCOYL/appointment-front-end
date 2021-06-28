@@ -14,10 +14,7 @@ const FormSignup = () => {
   });
 
   const dispatch = useDispatch();
-  const auth = useSelector((state) => {
-    console.log(state);
-    return state;
-  });
+  const auth = useSelector((state) => state.authReducer);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +27,7 @@ const FormSignup = () => {
     });
   };
 
-  //if (auth.user_id) return <Redirect to="/b" />;
+  if (auth.id) return <Redirect to="/booking" />;
 
   return (
     <div id="login-box">

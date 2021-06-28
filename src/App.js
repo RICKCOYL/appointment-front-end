@@ -1,8 +1,9 @@
 /* eslint-disable no-console */
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './assests/css/style.css';
-// import FormBooking from './components/FormBooking';
+import FormBooking from './components/FormBooking';
 import FormSignup from './components/FormSignup';
+import FormLogin from './components/FormLogin';
 import Navbar from './components/Navbar';
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={FormSignup} />
+          <Route exact path="/login" component={FormLogin} />
+          <Route exact path="/booking" component={FormBooking} />
+
 
         </Switch>
       </Router>

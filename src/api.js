@@ -13,11 +13,11 @@ export const createUser = (user) => (dispatch) => {
     .post(`${apiUrl}/signup`, user)
     .then((token) => {
       console.log(token);
-      localStorage.setItem('token', token.data);
+      localStorage.setItem('token', token.data.auth_token);
 
       dispatch({
         type: SIGN_UP,
-        token: token.data,
+        token: token.data.auth_token,
       });
     })
     .catch((error) => {
