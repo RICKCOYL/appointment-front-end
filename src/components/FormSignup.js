@@ -1,31 +1,64 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable eqeqeq */
 /* eslint-disable no-console */
-import { React, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { createUser } from '../api';
 
 const FormSignup = () => {
-  const initialState = {
+  const [state, setState] = useState({
     username: '',
     email: '',
     password: '',
-  };
+  });
 
-  const [state, setstate] = useState(initialState);
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => {
+    console.log(state);
+    return state;
+  });
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createUser(state));
 
-  };
-
-  const handleChange = (e) => {
-    setstate({
-      [e.target.name]: console.log(e.target.value),
+    setState({
+      username: '',
+      email: '',
+      password: '',
     });
   };
+
+  //if (auth.user_id) return <Redirect to="/b" />;
 
   return (
     <div id="login-box">
       <form className="left" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Username" required onChange={handleChange} value={state.username} />
-        <input type="text" name="email" placeholder="E-mail" required onChange={handleChange} value={state.email} />
-        <input type="password" name="password" placeholder="Password" required onChange={handleChange} value={state.password} />
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+          onChange={(e) => setState({ ...state, username: e.target.value })}
+          value={state.username}
+        />
+        <input
+          type="text"
+          name="email"
+          placeholder="E-mail"
+          required
+          onChange={(e) => setState({ ...state, email: e.target.value })}
+          value={state.email}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+          onChange={(e) => setState({ ...state, password: e.target.value })}
+          value={state.password}
+        />
 
         <input type="submit" name="signup_submit" value="Sign up" />
         <br />

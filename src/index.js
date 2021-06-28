@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
+// import GoogleLogin from 'react-google-login';
 import rootReducer from './reducers/index';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

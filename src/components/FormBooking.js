@@ -1,12 +1,12 @@
 import React from 'react';
 
 const FormBooking = () => (
-  <div id="booking" classNameName="section">
-    <div classNameName="section-center">
-      <div classNameName="container">
-        <div classNameName="row">
-          <div classNameName="col-md-7 col-md-push-5">
-            <div classNameName="booking-cta">
+  <div id="booking" className="section">
+    <div className="section-center">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-7 col-md-push-5">
+            <div className="booking-cta">
               <h1>Make your reservation</h1>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
@@ -19,38 +19,38 @@ const FormBooking = () => (
               </p>
             </div>
           </div>
-          <div classNameName="col-md-4 col-md-pull-7">
-            <div classNameName="booking-form">
+          <div className="col-md-4 col-md-pull-7">
+            <div className="booking-form">
               <form>
-                <div classNameName="form-group">
-                  <span classNameName="form-label">Appointment</span>
-                  <input classNameName="form-control" type="text" placeholder="Reason for Booking" />
+                <div className="form-group">
+                  <span className="form-label">Appointment</span>
+                  <input className="form-control" type="text" placeholder="Reason for Booking" />
                 </div>
-                <div classNameName="row">
-                  <div classNameName="col-sm-6">
-                    <div classNameName="form-group">
-                      <span classNameName="form-label">Day</span>
-                      <input classNameName="form-control" type="date" required />
+                <div className="row">
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <span className="form-label">Day</span>
+                      <input className="form-control" type="date" required />
                     </div>
                   </div>
-                  <div classNameName="col-sm-6">
-                    <div classNameName="form-group">
-                      <span classNameName="form-label">Time</span>
-                      <input classNameName="form-control" type="time" required />
+                  <div className="col-sm-6">
+                    <div className="form-group">
+                      <span className="form-label">Time</span>
+                      <input className="form-control" type="time" required />
                     </div>
                   </div>
                 </div>
-                <div classNameName="form-group">
-                  <span classNameName="form-label">Appointment</span>
-                  <select classNameName="form-control">
+                <div className="form-group">
+                  <span className="form-label">Appointment</span>
+                  <select className="form-control">
                     <option>Dr. Will Halstead</option>
                     <option>Dr. Natalie Manning</option>
                     <option>Dr. Connor Rhodes</option>
                     <option>Dr. Ethan Choi</option>
                   </select>
                 </div>
-                <div classNameName="form-btn">
-                  <button type="submit" classNameName="submit-btn">Book</button>
+                <div className="form-btn">
+                  <button type="submit" className="submit-btn">Book</button>
                 </div>
               </form>
             </div>
