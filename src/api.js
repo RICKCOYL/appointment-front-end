@@ -4,7 +4,7 @@
 /* eslint-disable no-alert */
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { loginUser, SIGN_UP, SIGN_IN } from './actions/action';
+import { loginUser, SIGN_UP, SIGN_IN, SIGN_OUT } from './actions/action';
 
 const apiUrl = 'http://localhost:3000';
 
@@ -50,4 +50,12 @@ export const login = (cred) => (dispatch) => {
     });
 };
 
+export const signOut = () => (dispatch) => {
+  dispatch({
+    type: 'CLEAR_TODOS',
+  });
 
+  dispatch({
+    type: SIGN_OUT,
+  });
+};
