@@ -1,29 +1,47 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { login } from '../api';
 
 const FormLogin = () => {
-  const initialState = {
+  const [state, setState] = useState({
     email: '',
     password: '',
-  };
+  });
 
-  const [state, setstate] = useState(initialState);
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.authReducer);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  };
-
-  const handleChange = (e) => {
-    setstate({
-      [e.target.name]: console.log(e.target.value),
+    dispatch(login(state));
+    setState({
+      email: '',
+      password: '',
     });
   };
+
+  if (auth.id) return <Redirect to="/booking" />;
 
   return (
     <div id="login-box">
       <form className="left" onSubmit={handleSubmit}>
-        <input type="text" name="email" placeholder="E-mail" onChange={handleChange} value={state.email} />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} value={state.password} />
+        <input
+          type="text"
+          name="email"
+          placeholder="E-mail"
+          value={state.email}
+          onChange={(e) => setState({ ...state, email: e.target.value })}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={state.password}
+          onChange={(e) => setState({ ...state, password: e.target.value })}
+        />
 
         <input type="submit" name="signup_submit" value="Login" />
       </form>
