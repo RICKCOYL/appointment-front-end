@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { ADD_BOOK, GET_BOOKS, DELETE_BOOK } from './action';
 
-const apiUrl = 'https://appoinment-api.herokuapp.com/';
+const apiUrl = 'http://localhost:3000/';
 
 export const setHeaders = () => {
   const headers = {

@@ -84,8 +84,7 @@ h3 {
     grid-template-columns: 40% 60%;
   }
 
-  .bookings-grid {
-    display: grid;
-    gap: 1em;
+  .bookings-cta {
+    margin-bottom: 10px;
   }
 }
