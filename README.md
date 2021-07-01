@@ -21,7 +21,7 @@ To build this application I used:
 
 ## Live-Demo
 
-[The live demo link](https://psychology-appointments-app.vercel.app/)
+[The live demo link](https://hungry-jones-a19c2a.netlify.app/)
 
 ## Link for back-end repository
 
