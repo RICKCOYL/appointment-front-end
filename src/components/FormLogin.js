@@ -45,7 +45,7 @@ const FormLogin = () => {
         />
 
         <input className="signup-btn" type="submit" name="signup_submit" value="Login" />
-        <a href="/">Don't have an account</a>
+        <a href="/">Dont have an account</a>
       </form>
     </div>
   );

@@ -101,8 +101,7 @@ const FormBooking = () => {
               </form>
             </div>
 
-
-            <div id="bookings-grid" >
+            <div id="bookings-grid">
               <div className="bookings">
                 {bookings.map((e) => (
                   <div className="booking-cta" key={e.id}>
