@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './assests/css/style.css';
 import FormBooking from './components/FormBooking';
 import FormSignup from './components/FormSignup';
 import FormLogin from './components/FormLogin';
