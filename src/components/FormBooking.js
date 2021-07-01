@@ -1,48 +1,94 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { addBook, getBooks, deleteBooking } from '../actions/booking';
 
-const FormBooking = () => (
-  <div id="booking" className="section">
-    <div className="section-center">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-7 col-md-push-5">
-            <div className="booking-cta">
-              <h1>Make your reservation</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                facere, soluta
-                magnam
-                consectetur molestias itaque
-                ad sint fugit architecto incidunt iste culpa perspiciatis possimus voluptates
-                aliquid consequuntur cumque quasi.
-                Perspiciatis.
-              </p>
-            </div>
-          </div>
-          <div className="col-md-4 col-md-pull-7">
-            <div className="booking-form">
-              <form>
+const FormBooking = () => {
+  const auth = useSelector((state) => state.authReducer);
+  const bookings = useSelector((state) => state.appointment);
+
+  const dispatch = useDispatch();
+
+  const [state, setState] = useState({
+    title: '',
+    date: '',
+    time: '',
+    details: 'Dr. Will Halstead',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addBook(state));
+
+    setState({
+      title: '',
+      date: '',
+      time: '',
+      details: 'Dr. Will Halstead',
+    });
+  };
+
+  const handleDelete = (id) => {
+    dispatch(deleteBooking(id));
+  };
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, []);
+
+  if (!auth.id) return <Redirect to="/login" />;
+
+  return (
+    <div className="section">
+      <div className="section-center">
+        <div className="container">
+          <div id="booking">
+
+            <div className="booking-form mr-md-5">
+              <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <span className="form-label">Appointment</span>
-                  <input className="form-control" type="text" placeholder="Reason for Booking" />
+                  <input
+                    className="form-control"
+                    type="text"
+                    placeholder="Reason for Booking"
+                    onChange={(e) => setState({ ...state, title: e.target.value })}
+                    value={state.title}
+                  />
                 </div>
                 <div className="row">
                   <div className="col-sm-6">
                     <div className="form-group">
                       <span className="form-label">Day</span>
-                      <input className="form-control" type="date" required />
+                      <input
+                        className="form-control"
+                        type="date"
+                        required
+                        onChange={(e) => setState({ ...state, date: e.target.value })}
+                        value={state.date}
+                      />
                     </div>
                   </div>
                   <div className="col-sm-6">
                     <div className="form-group">
                       <span className="form-label">Time</span>
-                      <input className="form-control" type="time" required />
+                      <input
+                        className="form-control"
+                        type="time"
+                        required
+                        onChange={(e) => setState({ ...state, time: e.target.value })}
+                        value={state.time}
+                      />
                     </div>
                   </div>
                 </div>
                 <div className="form-group">
                   <span className="form-label">Appointment</span>
-                  <select className="form-control">
+                  <select
+                    className="form-control"
+                    onChange={(e) => setState({ ...state, details: e.target.value })}
+                    value={state.details}
+                  >
                     <option>Dr. Will Halstead</option>
                     <option>Dr. Natalie Manning</option>
                     <option>Dr. Connor Rhodes</option>
@@ -54,11 +100,26 @@ const FormBooking = () => (
                 </div>
               </form>
             </div>
+
+
+            <div id="bookings-grid" >
+              <div className="bookings">
+                {bookings.map((e) => (
+                  <div className="booking-cta" key={e.id}>
+                    <h4>{e.title}</h4>
+                    <div>{`DATE: ${e.date} & ${e.time}`}</div>
+                    <div>{e.details}</div>
+                    <span><i role="button" onKeyDown={handleDelete} aria-label="Delete button" tabIndex={0} id="trash" className="far fa-trash-alt" onClick={() => handleDelete(e.id)} /></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default FormBooking;

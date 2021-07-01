@@ -1,11 +1,11 @@
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
 export const APPOINTMENTS = 'APPOINTMENTS';
 export const REMOVE_APPOINTMENTS = 'REMOVE_APPOINTMENTS';
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
-export const USER_LOADED = 'USER_LOADED';
+export const ADD_BOOK = 'ADD_BOOK';
+export const DELETE_BOOK = 'DELETE_BOOK';
+export const GET_BOOKS = 'GET_BOOKS';
 
 export const fetchAppoinments = (userObj) => ({
   type: APPOINTMENTS,
@@ -21,3 +21,9 @@ export const loginUser = (userObj) => ({
   type: 'LOGIN_USER',
   payload: userObj,
 });
+
+export const signOut = () => (dispatch) => {
+  dispatch({
+    type: SIGN_OUT,
+  });
+};

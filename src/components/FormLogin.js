@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login } from '../api';
+import { login } from '../actions/auth';
 
 const FormLogin = () => {
   const [state, setState] = useState({
@@ -27,6 +27,7 @@ const FormLogin = () => {
 
   return (
     <div id="login-box">
+      <h3>Log in</h3>
       <form className="left" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -43,16 +44,9 @@ const FormLogin = () => {
           onChange={(e) => setState({ ...state, password: e.target.value })}
         />
 
-        <input type="submit" name="signup_submit" value="Login" />
+        <input className="signup-btn" type="submit" name="signup_submit" value="Login" />
+        <a href="/">Don't have an account</a>
       </form>
-
-      <div className="right">
-
-        <input type="submit" className="social-signin facebook" value="Log in with facebook" />
-        <input type="submit" className="social-signin twitter" value="Log in with Twitter" />
-        <input type="submit" id="google" className="social-signin google" value="Log in with Google" />
-      </div>
-      <div className="or">OR</div>
     </div>
   );
 };

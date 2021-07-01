@@ -1,9 +1,10 @@
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { signOut } from '../api';
+import { useDispatch, useSelector } from 'react-redux';
+import { signOut } from '../actions/action';
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.authReducer);
   const history = useHistory();
 
   const logout = () => {
@@ -12,11 +13,22 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <Link to="/">Sign up</Link>
-      <Link to="/login">Login</Link>
-      <input type="submit" value="" onClick={() => logout()} />
-    </div>
+    <nav>
+      {!auth.id ? (
+        <div>
+          <Link id="signup" to="/">Sign up</Link>
+          <Link id="login" to="/login">Login</Link>
+        </div>
+      )
+        : (
+
+          <>
+            <input id="signout" type="submit" value="Sign Out" onClick={() => logout()} />
+          </>
+
+        )}
+
+    </nav>
   );
 };
 

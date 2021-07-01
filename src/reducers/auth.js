@@ -3,8 +3,9 @@
 /* eslint-disable no-case-declarations */
 import jwtDecode from 'jwt-decode';
 import { toast } from 'react-toastify';
+import { NotificationManager } from 'react-notifications';
 import {
-  SIGN_UP, SIGN_IN, SIGN_OUT, USER_LOADED,
+  SIGN_UP, SIGN_IN, SIGN_OUT,
 } from '../actions/action';
 
 const initialState = {
@@ -32,9 +33,7 @@ const authReducer = (state = initialState, action) => {
       });
       return {
         token: null,
-        name: null,
-        email: null,
-        _id: null,
+        id: null,
       };
     default:
       return state;

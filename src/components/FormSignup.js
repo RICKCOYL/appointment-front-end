@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { createUser } from '../api';
+import { createUser } from '../actions/auth';
 
 const FormSignup = () => {
   const [state, setState] = useState({
@@ -31,6 +31,7 @@ const FormSignup = () => {
 
   return (
     <div id="login-box">
+      <h3>Sign Up</h3>
       <form className="left" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -57,19 +58,9 @@ const FormSignup = () => {
           value={state.password}
         />
 
-        <input type="submit" name="signup_submit" value="Sign up" />
-        <br />
-        <br />
-        <a href="/">Already have an account</a>
+        <input className="signup-btn" type="submit" name="signup_submit" value="Sign up" />
+        <a href="/login">Already have an account</a>
       </form>
-
-      <div className="right">
-
-        <input type="submit" className="social-signin facebook" value="Sign up with facebook" />
-        <input type="submit" className="social-signin twitter" value="Sign up with Twitter" />
-        <input type="submit" id="google" className="social-signin google" value="Sign up with Google" />
-      </div>
-      <div className="or">OR</div>
     </div>
   );
 };

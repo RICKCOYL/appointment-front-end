@@ -1,18 +1,15 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-sequences */
-/* eslint-disable no-console */
-/* eslint-disable no-alert */
-import axios from 'axios';
+/* eslint-disable no-unused-expressions */import axios from 'axios';
 import { toast } from 'react-toastify';
-import { loginUser, SIGN_UP, SIGN_IN, SIGN_OUT } from './actions/action';
+import {
+  SIGN_UP, SIGN_IN,
+} from './action';
 
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'http://localhost:3000/';
 
 export const createUser = (user) => (dispatch) => {
   axios
     .post(`${apiUrl}/signup`, user)
     .then((token) => {
-      console.log(token);
       localStorage.setItem('token', token.data.auth_token);
 
       dispatch({
@@ -21,8 +18,6 @@ export const createUser = (user) => (dispatch) => {
       });
     })
     .catch((error) => {
-      console.log(error.response);
-
       toast.error(error.response?.data, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
@@ -33,7 +28,6 @@ export const login = (cred) => (dispatch) => {
   axios
     .post(`${apiUrl}/auth/login`, cred)
     .then((token) => {
-      console.log(token);
       localStorage.setItem('token', token.data.auth_token);
 
       dispatch({
@@ -42,20 +36,8 @@ export const login = (cred) => (dispatch) => {
       });
     })
     .catch((error) => {
-      console.log(error.response);
-
       toast.error(error.response?.data, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     });
-};
-
-export const signOut = () => (dispatch) => {
-  dispatch({
-    type: 'CLEAR_TODOS',
-  });
-
-  dispatch({
-    type: SIGN_OUT,
-  });
 };
