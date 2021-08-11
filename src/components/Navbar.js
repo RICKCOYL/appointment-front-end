@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
+    <nav className="position-sticky">
       {!auth.id ? (
         <div>
           <Link id="signup" to="/">Sign up</Link>

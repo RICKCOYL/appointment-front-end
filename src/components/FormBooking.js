@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { addBook, getBooks, deleteBooking } from '../actions/booking';
+import {
+  addBook, getBooks, deleteBooking, doctorName,
+} from '../actions/booking';
 
 const FormBooking = () => {
   const auth = useSelector((state) => state.authReducer);
@@ -13,19 +15,24 @@ const FormBooking = () => {
     title: '',
     date: '',
     time: '',
-    details: 'Dr. Will Halstead',
   });
+
+  const [doctor, setDoctor] = useState({ doctor: 'Dr. Will Halstead' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(doctorName(doctor));
+    console.log(doctor);
+
     dispatch(addBook(state));
 
     setState({
       title: '',
       date: '',
       time: '',
-      details: 'Dr. Will Halstead',
     });
+
+    setDoctor({ doctor: 'Dr. Will Halstead' });
   };
 
   const handleDelete = (id) => {
@@ -45,8 +52,8 @@ const FormBooking = () => {
           <div id="booking">
 
             <div className="booking-form mr-md-5">
-              <form onSubmit={handleSubmit}>
-                <div className="form-group">
+              <form className="position-fixed" onSubmit={handleSubmit}>
+                <div className="form-group ">
                   <span className="form-label">Appointment</span>
                   <input
                     className="form-control"
@@ -86,8 +93,8 @@ const FormBooking = () => {
                   <span className="form-label">Appointment</span>
                   <select
                     className="form-control"
-                    onChange={(e) => setState({ ...state, details: e.target.value })}
-                    value={state.details}
+                    onChange={(e) => setDoctor({ ...state, doctor: e.target.value })}
+                    value={doctor.doctor}
                   >
                     <option>Dr. Will Halstead</option>
                     <option>Dr. Natalie Manning</option>

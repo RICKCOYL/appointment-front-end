@@ -6,6 +6,7 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const ADD_BOOK = 'ADD_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';
 export const GET_BOOKS = 'GET_BOOKS';
+export const DOCTOR_NAME = 'DOCTOR_NAME';
 
 export const fetchAppoinments = (userObj) => ({
   type: APPOINTMENTS,
@@ -27,3 +28,8 @@ export const signOut = () => (dispatch) => {
     type: SIGN_OUT,
   });
 };
+
+export const doctorName = (userObj) => ({
+  type: 'DOCTOR_NAME',
+  payload: userObj,
+});

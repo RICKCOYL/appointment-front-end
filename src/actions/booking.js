@@ -1,6 +1,9 @@
+/* eslint-disable no-console */
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { ADD_BOOK, GET_BOOKS, DELETE_BOOK } from './action';
+import {
+  ADD_BOOK, GET_BOOKS, DELETE_BOOK, DOCTOR_NAME,
+} from './action';
 
 const apiUrl = 'http://localhost:3000/';
 
@@ -56,6 +59,24 @@ export const deleteBooking = (id) => (dispatch) => {
       });
     })
     .catch((error) => {
+      toast.error(error.response?.data, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    });
+};
+
+export const doctorName = (doc) => (dispatch) => {
+  console.log(doc);
+  axios
+    .get(`${apiUrl}doctors`, doc, setHeaders())
+    .then((doctor) => {
+      dispatch({
+        type: DOCTOR_NAME,
+        doctor,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
       toast.error(error.response?.data, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });

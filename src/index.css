@@ -64,11 +64,11 @@ h3 {
   color: #fff;
 }
 
-#bookings-grid {
+.booking-cta{
   background-color: #005b96;
   color: #fff;
+  margin-bottom: 10px;
   width: 90%;
-  margin: 20px auto 0 auto;
   border-radius: 5px;
   padding: 10px;
 }
@@ -82,9 +82,5 @@ h3 {
   #booking {
     display: grid;
     grid-template-columns: 40% 60%;
-  }
-
-  .bookings-cta {
-    margin-bottom: 10px;
   }
 }
