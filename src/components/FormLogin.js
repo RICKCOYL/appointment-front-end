@@ -26,27 +26,31 @@ const FormLogin = () => {
   if (auth.id) return <Redirect to="/booking" />;
 
   return (
-    <div id="login-box">
-      <h3>Log in</h3>
-      <form className="left" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="email"
-          placeholder="E-mail"
-          value={state.email}
-          onChange={(e) => setState({ ...state, email: e.target.value })}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          onChange={(e) => setState({ ...state, password: e.target.value })}
-        />
 
-        <input className="signup-btn" type="submit" name="signup_submit" value="Login" />
-        <a href="/">Dont have an account</a>
-      </form>
+    <div id="login-box">
+
+      <>
+        <h3>Log in</h3>
+        <form className="left" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="email"
+            placeholder="E-mail"
+            value={state.email}
+            onChange={(e) => setState({ ...state, email: e.target.value })}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={state.password}
+            onChange={(e) => setState({ ...state, password: e.target.value })}
+          />
+
+          <input className="signup-btn" type="submit" name="signup_submit" value="Login" />
+          <a href="/">Dont have an account</a>
+        </form>
+      </>
     </div>
   );
 };

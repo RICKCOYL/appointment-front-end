@@ -11,20 +11,19 @@ import {
 const initialState = {
   token: localStorage.getItem('token', null),
   id: null,
+  name: null,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_IN:
     case SIGN_UP:
-      toast('Welcome...', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
       const user = jwtDecode(action.token);
       return {
         ...initialState,
         token: action.token,
         id: user.user_id,
+        name: user.username,
       };
     case SIGN_OUT:
       localStorage.removeItem('token');

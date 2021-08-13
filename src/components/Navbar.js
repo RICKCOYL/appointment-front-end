@@ -22,9 +22,10 @@ const Navbar = () => {
       )
         : (
 
-          <>
+          <div>
+            <span id="username">{auth.name}</span>
             <input id="signout" type="submit" value="Sign Out" onClick={() => logout()} />
-          </>
+          </div>
 
         )}
 

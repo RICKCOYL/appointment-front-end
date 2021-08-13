@@ -73,6 +73,12 @@ h3 {
   padding: 10px;
 }
 
+#username {
+  color: #fff;
+  /* uppercase */
+  text-transform: uppercase;
+}
+
 @media (min-width: 768px) {
   #login-box form input {
     width: 50%;

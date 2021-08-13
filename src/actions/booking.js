@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -11,6 +12,7 @@ export const setHeaders = () => {
   const headers = {
     headers: {
       authorization: localStorage.getItem('token'),
+      'Content-Type': 'application/json',
     },
   };
 
@@ -42,11 +44,7 @@ export const getBooks = () => (dispatch) => {
         books,
       });
     })
-    .catch((error) => {
-      toast.error(error.response?.data, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-    });
+    .catch((error) => error.response.data);
 };
 
 export const deleteBooking = (id) => (dispatch) => {
@@ -68,17 +66,12 @@ export const deleteBooking = (id) => (dispatch) => {
 export const doctorName = (doc) => (dispatch) => {
   console.log(doc);
   axios
-    .get(`${apiUrl}doctors`, doc, setHeaders())
+    .post(`${apiUrl}doctors`, doc, setHeaders())
     .then((doctor) => {
       dispatch({
         type: DOCTOR_NAME,
         doctor,
       });
     })
-    .catch((error) => {
-      console.log(error);
-      toast.error(error.response?.data, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-    });
+    .catch((error) => console.log(error));
 };
