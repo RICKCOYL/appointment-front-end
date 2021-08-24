@@ -6,7 +6,9 @@ export const SIGN_OUT = 'SIGN_OUT';
 export const ADD_BOOK = 'ADD_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';
 export const GET_BOOKS = 'GET_BOOKS';
-export const DOCTOR_NAME = 'DOCTOR_NAME';
+export const ADD_URGENCY = 'ADD_URGENCY';
+export const UPDATE_URGENCY = 'UPDATE_URGENCY';
+export const GET_URGENCY = 'GET_URGENCY';
 
 export const fetchAppoinments = (userObj) => ({
   type: APPOINTMENTS,
