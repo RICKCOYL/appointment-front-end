@@ -21,12 +21,21 @@ const Navbar = () => {
         </div>
       )
         : (
+          <nav className="second-nav">
+            <div>
+              <Link id="home" to="/">Appointment List</Link>
+              <Link id="profile" to="/urgent-list">Urgent List</Link>
+            </div>
 
-          <div>
-            <span id="username">{auth.name}</span>
-            <input id="signout" type="submit" value="Sign Out" onClick={() => logout()} />
-          </div>
-
+            <div id="nameandbtn">
+              <span id="username">
+                (
+                {auth.name}
+                )
+              </span>
+              <input id="signout" type="submit" value="Sign Out" onClick={() => logout()} />
+            </div>
+          </nav>
         )}
 
     </nav>

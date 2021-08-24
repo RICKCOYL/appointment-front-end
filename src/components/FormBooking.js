@@ -1,50 +1,72 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { ToastContainer } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
-  addBook, getBooks, deleteBooking, doctorName,
+  addBook, getBooks, deleteBooking, urgencyState, updateChecked, getUrgency,
 } from '../actions/booking';
+import urgentImg from '../assests/img/urgent.png';
 
 const FormBooking = () => {
-  const auth = useSelector((state) => state.authReducer);
-  const bookings = useSelector((state) => state.appointment);
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+    dispatch(getUrgency());
+  }, []);
+
+  const auth = useSelector((state) => state.authReducer);
+
+  const bookings = useSelector((state) => state.userObject);
 
   const [state, setState] = useState({
     title: '',
     date: '',
     time: '',
+    details: 'Dr. Will Halstead',
   });
 
-  const [doctor, setDoctor] = useState({
-    doctor: 'Dr. Will Halstead',
+  const [urgency, setUrgency] = useState({
+    title: '',
+    date: '',
+    time: '',
+    details: '',
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(doctorName(doctor));
 
     dispatch(addBook(state));
+    console.log(state);
 
     setState({
       title: '',
       date: '',
       time: '',
+      details: 'Dr. Will Halstead',
     });
-
-    setDoctor({ doctor: 'Dr. Will Halstead' });
   };
 
   const handleDelete = (id) => {
     dispatch(deleteBooking(id));
   };
 
-  useEffect(() => {
-    dispatch(getBooks());
-  }, []);
+  const handleCheckBox = (value, title, time, date, details) => {
+    console.log(title, time, date, details);
+    if (value === true && title !== '' && time !== '' && date !== '' && details !== '') {
+      setUrgency({
+        title,
+        date,
+        time,
+        details,
+      });
+    }
+
+    dispatch(urgencyState(urgency));
+  };
 
   if (!auth.id) return <Redirect to="/login" />;
 
@@ -97,8 +119,8 @@ const FormBooking = () => {
                     <span className="form-label">Appointment</span>
                     <select
                       className="form-control"
-                      onChange={(e) => setDoctor({ ...doctor, doctor: e.target.value })}
-                      value={doctor.doctor}
+                      onChange={(e) => setState({ ...state, details: e.target.value })}
+                      value={state.details}
                     >
                       <option>Dr. Will Halstead</option>
                       <option>Dr. Natalie Manning</option>
@@ -111,20 +133,24 @@ const FormBooking = () => {
                   </div>
                 </form>
               </div>
+              <div>
+                <p className="info">* To add Appointments to your urgent list please make sure the checkbox is checked</p>
+                <div id="bookings-grid">
+                  <div className="bookings">
+                    { bookings === undefined ? <div>Loading...</div>
+                      : bookings.map((e) => (
+                        <div className="booking-cta" key={e.id}>
+                          <h4>{e.title}</h4>
+                          <div>{`DATE: ${e.date} & ${e.time}`}</div>
+                          <div>{e.details}</div>
+                          <span><i role="button" onKeyDown={handleDelete} aria-label="Delete button" tabIndex={0} id="trash" className="far fa-trash-alt" onClick={() => handleDelete(e.id)} /></span>
+                          <input type="checkbox" id="urgent" onChange={(element) => handleCheckBox(element.target.checked, e.title, e.time, e.date, e.details)} />
+                        </div>
 
-              <div id="bookings-grid">
-                <div className="bookings">
-                  {bookings.map((e) => (
-                    <div className="booking-cta" key={e.id}>
-                      <h4>{e.title}</h4>
-                      <div>{`DATE: ${e.date} & ${e.time}`}</div>
-                      <div>{e.details}</div>
-                      <span><i role="button" onKeyDown={handleDelete} aria-label="Delete button" tabIndex={0} id="trash" className="far fa-trash-alt" onClick={() => handleDelete(e.id)} /></span>
-                    </div>
-                  ))}
+                      ))}
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

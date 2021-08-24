@@ -1,6 +1,8 @@
-import { ADD_BOOK, DELETE_BOOK, GET_BOOKS } from '../actions/action';
+import {
+  ADD_BOOK, DELETE_BOOK, GET_BOOKS,
+} from '../actions/action';
 
-const appointment = (state = [], action) => {
+const userObject = (state = [], action) => {
   switch (action.type) {
     case GET_BOOKS:
       return action.books.data;
@@ -13,4 +15,4 @@ const appointment = (state = [], action) => {
   }
 };
 
-export default appointment;
+export default userObject;

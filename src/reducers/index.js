@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
-import appointment from './appiontments';
+import userObject from './appiontments';
 import authReducer from './auth';
-import doctor from './doctor';
+import GetUrgents from './GetUrgents';
 
 const rootReducer = combineReducers({
-  appointment,
+  userObject,
   authReducer,
-  doctor,
-
+  GetUrgents,
 });
 
 export default rootReducer;

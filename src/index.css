@@ -1,15 +1,19 @@
 nav {
   background-color: #011f4b;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 20px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
 }
 
 nav a {
   color: #fff;
+  text-decoration: none;
+}
+
+ a {
+  margin-right: 15px;
 }
 
 nav a:hover {
@@ -46,13 +50,12 @@ h3 {
 }
 
 #signout {
-  position: absolute;
-  right: 15px;
   background-color: #d0efff;
   border: none;
   border-radius: 5px;
   color: #000;
   font-weight: bold;
+  height: 30px;
 }
 
 .form-btn button {
@@ -75,8 +78,25 @@ h3 {
 
 #username {
   color: #fff;
-  /* uppercase */
   text-transform: uppercase;
+}
+
+#nameandbtn {
+  width: 120px;
+  display: flex;
+}
+
+form {
+  margin-bottom: 30px;
+}
+
+input[type="checkbox"] {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.info {
+  color: aqua;
 }
 
 @media (min-width: 768px) {
@@ -88,5 +108,12 @@ h3 {
   #booking {
     display: grid;
     grid-template-columns: 40% 60%;
+  }
+
+  .second-nav {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
   }
 }
