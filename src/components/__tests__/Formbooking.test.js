@@ -14,6 +14,12 @@ const setup = () => shallow(
     <FormBooking />
   </Provider>,
 );
+// add a test to check if the component renders from the store\
+describe('FormBooking', () => {
+  it('renders without crashing', () => {
+    setup();
+  });
+});
 
 describe('Formbooking Component', () => {
   let component;
