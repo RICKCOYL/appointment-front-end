@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
-  addBook, getBooks, deleteBooking, urgencyState, updateChecked, getUrgency,
+  addBook, getBooks, removeBook, urgencyState, getUrgency,
 } from '../actions/booking';
 import urgentImg from '../assests/img/urgent.png';
 
@@ -21,6 +21,7 @@ const FormBooking = () => {
   const auth = useSelector((state) => state.authReducer);
 
   const bookings = useSelector((state) => state.userObject);
+  bookings.sort();
 
   const [state, setState] = useState({
     title: '',
@@ -36,11 +37,12 @@ const FormBooking = () => {
     details: '',
   });
 
+  const [checkbox, setCheckbox] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     dispatch(addBook(state));
-    console.log(state);
 
     setState({
       title: '',
@@ -51,17 +53,26 @@ const FormBooking = () => {
   };
 
   const handleDelete = (id) => {
-    dispatch(deleteBooking(id));
+    dispatch(removeBook(id));
   };
 
   const handleCheckBox = (value, title, time, date, details) => {
     console.log(title, time, date, details);
-    if (value === true && title !== '' && time !== '' && date !== '' && details !== '') {
+    if (value === true && title !== null && time !== null && date !== null && details !== null) {
+      setCheckbox(true);
       setUrgency({
         title,
         date,
         time,
         details,
+      });
+    } else if (value === false) {
+      setCheckbox(false);
+      setUrgency({
+        title: '',
+        date: '',
+        time: '',
+        details: '',
       });
     }
 
@@ -143,8 +154,25 @@ const FormBooking = () => {
                           <h4>{e.title}</h4>
                           <div>{`DATE: ${e.date} & ${e.time}`}</div>
                           <div>{e.details}</div>
-                          <span><i role="button" onKeyDown={handleDelete} aria-label="Delete button" tabIndex={0} id="trash" className="far fa-trash-alt" onClick={() => handleDelete(e.id)} /></span>
-                          <input type="checkbox" id="urgent" onChange={(element) => handleCheckBox(element.target.checked, e.title, e.time, e.date, e.details)} />
+                          <span>
+                            <i
+                              onKeyDown={handleDelete}
+                              role="button"
+                              aria-label="Delete button"
+                              tabIndex={0}
+                              id="trash"
+                              className="far fa-trash-alt"
+                              onClick={() => handleDelete(e.id)}
+                            />
+                          </span>
+                          <input
+                            type="checkbox"
+                            value={checkbox}
+                            id="urgent"
+                            className=" ml-4"
+                            onChange={(element) => handleCheckBox(element.target.checked,
+                              e.title, e.time, e.date, e.details)}
+                          />
                         </div>
 
                       ))}

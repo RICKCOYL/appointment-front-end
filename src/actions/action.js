@@ -9,6 +9,7 @@ export const GET_BOOKS = 'GET_BOOKS';
 export const ADD_URGENCY = 'ADD_URGENCY';
 export const UPDATE_URGENCY = 'UPDATE_URGENCY';
 export const GET_URGENCY = 'GET_URGENCY';
+export const DELETE_URGENCY = 'DELETE_URGENCY';
 
 export const fetchAppoinments = (userObj) => ({
   type: APPOINTMENTS,

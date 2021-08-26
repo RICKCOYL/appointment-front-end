@@ -1,9 +1,19 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { deleteUrgency } from '../actions/booking';
 
 const UrgentList = () => {
   const urgentList = useSelector((state) => state.GetUrgents[0]);
-  console.log(urgentList);
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.authReducer);
+
+  const handleDeleteUrgency = (id) => {
+    dispatch(deleteUrgency(id));
+  };
+
+  if (!auth.id) return <Redirect to="/login" />;
+
   return (
     <div>
       <h1>Urgent List</h1>
@@ -15,7 +25,7 @@ const UrgentList = () => {
                 <h4>{e.title}</h4>
                 <div>{`DATE: ${e.date} & ${e.time}`}</div>
                 <div>{e.details}</div>
-                <span><i role="button" aria-label="Delete button" tabIndex={0} id="trash" className="far fa-trash-alt" /></span>
+                <span><i role="button" onKeyDown={handleDeleteUrgency} aria-label="Delete button" tabIndex={0} id="trash" className="far fa-trash-alt" onClick={() => handleDeleteUrgency(e.id)} /></span>
               </div>
 
             ))}
