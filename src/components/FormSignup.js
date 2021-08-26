@@ -42,7 +42,7 @@ const FormSignup = () => {
           value={state.username}
         />
         <input
-          type="text"
+          type="email"
           name="email"
           placeholder="E-mail"
           required

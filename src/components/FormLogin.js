@@ -33,7 +33,7 @@ const FormLogin = () => {
         <h3>Log in</h3>
         <form className="left" onSubmit={handleSubmit}>
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="E-mail"
             value={state.email}

@@ -41,9 +41,10 @@ export const getBooks = () => (dispatch) => {
   axios
     .get(`${apiUrl}listings`, setHeaders())
     .then((books) => {
+      console.log('this are', books);
       dispatch({
         type: GET_BOOKS,
-        books,
+        payload: books.data,
       });
     })
     .catch((error) => error.response.data);
