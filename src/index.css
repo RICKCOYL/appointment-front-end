@@ -1,3 +1,7 @@
+a {
+  margin-right: 15px;
+}
+
 nav {
   background-color: #011f4b;
   margin-bottom: 20px;
@@ -10,10 +14,6 @@ nav {
 nav a {
   color: #fff;
   text-decoration: none;
-}
-
- a {
-  margin-right: 15px;
 }
 
 nav a:hover {
@@ -67,7 +67,7 @@ h3 {
   color: #fff;
 }
 
-.booking-cta{
+.booking-cta {
   background-color: #005b96;
   color: #fff;
   margin-bottom: 10px;
