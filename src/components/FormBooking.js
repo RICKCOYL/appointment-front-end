@@ -57,7 +57,6 @@ const FormBooking = () => {
   };
 
   const handleCheckBox = (value, title, time, date, details) => {
-    console.log(value);
     if (value === true && title !== null && time !== null && date !== null && details !== null) {
       setCheckbox(true);
       setUrgency({

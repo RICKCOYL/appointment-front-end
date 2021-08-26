@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import {
@@ -13,7 +11,6 @@ export const setHeaders = () => {
   const headers = {
     headers: {
       authorization: localStorage.getItem('token'),
-      // 'Content-Type': 'application/json',
     },
   };
 
@@ -21,7 +18,6 @@ export const setHeaders = () => {
 };
 
 export const addBook = (book) => (dispatch) => {
-  console.log(book);
   axios
     .post(`${apiUrl}listings`, book, setHeaders())
     .then((token) => {
@@ -41,10 +37,9 @@ export const getBooks = () => (dispatch) => {
   axios
     .get(`${apiUrl}listings`, setHeaders())
     .then((books) => {
-      console.log('this are', books);
       dispatch({
         type: GET_BOOKS,
-        payload: books.data,
+        books: books.data,
       });
     })
     .catch((error) => error.response.data);
@@ -53,7 +48,7 @@ export const getBooks = () => (dispatch) => {
 export const removeBook = (bookId) => (dispatch) => {
   axios
     .delete(`${apiUrl}listings/${bookId}`, setHeaders())
-    .then((books) => {
+    .then(() => {
       dispatch({
         type: DELETE_BOOK,
         bookId,
@@ -63,7 +58,6 @@ export const removeBook = (bookId) => (dispatch) => {
 };
 
 export const urgencyState = (doc) => (dispatch) => {
-  console.log(doc);
   axios
     .post(`${apiUrl}urgents`, doc, setHeaders())
     .then((token) => {
