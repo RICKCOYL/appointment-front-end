@@ -149,7 +149,7 @@ const FormBooking = () => {
                   <div className="bookings">
 
                     { bookings === undefined ? <div>Loading...</div>
-                      : bookings && bookings.map((e) => (
+                      : bookings.map((e) => (
                         <div className="booking-cta" key={e.id}>
                           <h4>{e.title}</h4>
                           <div>{`DATE: ${e.date} & ${e.time}`}</div>

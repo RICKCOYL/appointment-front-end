@@ -17,23 +17,6 @@ export const setHeaders = () => {
   return headers;
 };
 
-export const addBook = (book) => (dispatch) => {
-  axios
-    .post(`${apiUrl}listings`, book, setHeaders())
-    .then((token) => {
-      dispatch({
-        type: ADD_BOOK,
-        token: token.data,
-      });
-      toast.success('Booking added successfully');
-    })
-    .catch((error) => {
-      toast.error(error.response?.data, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-    });
-};
-
 export const getBooks = () => (dispatch) => {
   axios
     .get(`${apiUrl}listings`, setHeaders())
@@ -47,16 +30,54 @@ export const getBooks = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const removeBook = (bookId) => (dispatch) => {
-  axios
-    .delete(`${apiUrl}listings/${bookId}`, setHeaders())
-    .then(() => {
-      dispatch({
-        type: DELETE_BOOK,
-        bookId,
-      });
-    })
-    .catch((error) => error.response.data);
+// export const addBook = (book) => (dispatch) => {
+//   axios
+//     .post(`${apiUrl}listings`, book, setHeaders())
+//     .then((token) => {
+//       dispatch({
+//         type: ADD_BOOK,
+//         token: token.data,
+//         state: getBooks(),
+//       });
+//       toast.success('Booking added successfully');
+//     })
+//     .catch((error) => {
+//       toast.error(error.response?.data, {
+//         position: toast.POSITION.BOTTOM_RIGHT,
+//       });
+//     });
+// };
+
+// create a addBook action using axios and await
+export const addBook = (book) => async (dispatch) => {
+  try {
+    const response = await axios.post(`${apiUrl}listings`, book, setHeaders());
+    dispatch({
+      type: ADD_BOOK,
+      token: response.data,
+      state: getBooks(),
+    });
+    toast.success('Booking added successfully');
+  } catch (error) {
+    toast.error(error.response?.data, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  }
+};
+
+export const removeBook = (id) => async (dispatch) => {
+  try {
+    await axios.delete(`${apiUrl}listings/${id}`, setHeaders());
+    dispatch({
+      type: DELETE_BOOK,
+      id,
+    });
+    toast.success('Booking deleted successfully');
+  } catch (error) {
+    toast.error(error.response?.data, {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  }
 };
 
 export const urgencyState = (doc) => (dispatch) => {

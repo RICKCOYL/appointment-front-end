@@ -7,7 +7,7 @@ const userObject = (state = [], action) => {
     case GET_BOOKS:
       return action.books.data;
     case ADD_BOOK:
-      return [action.books.data, ...state];
+      return [...state, action.books.data];
     case DELETE_BOOK:
       return state.filter((todo) => todo.id !== action.id);
     default:
