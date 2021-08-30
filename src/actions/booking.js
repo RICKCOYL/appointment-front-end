@@ -5,7 +5,7 @@ import {
   GET_URGENCY, DELETE_URGENCY,
 } from './action';
 
-const apiUrl = 'http://localhost:3000/';
+const apiUrl = 'https://appoinment-api.herokuapp.com/';
 
 export const setHeaders = () => {
   const headers = {
@@ -30,25 +30,6 @@ export const getBooks = () => (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-// export const addBook = (book) => (dispatch) => {
-//   axios
-//     .post(`${apiUrl}listings`, book, setHeaders())
-//     .then((token) => {
-//       dispatch({
-//         type: ADD_BOOK,
-//         token: token.data,
-//         state: getBooks(),
-//       });
-//       toast.success('Booking added successfully');
-//     })
-//     .catch((error) => {
-//       toast.error(error.response?.data, {
-//         position: toast.POSITION.BOTTOM_RIGHT,
-//       });
-//     });
-// };
-
-// create a addBook action using axios and await
 export const addBook = (book) => async (dispatch) => {
   try {
     const response = await axios.post(`${apiUrl}listings`, book, setHeaders());

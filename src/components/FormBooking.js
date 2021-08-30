@@ -37,7 +37,7 @@ const FormBooking = () => {
     details: '',
   });
 
-  const [checkbox, setCheckbox] = useState(true);
+  const [checkbox, setCheckbox] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,8 +57,8 @@ const FormBooking = () => {
   };
 
   const handleCheckBox = (value, title, time, date, details) => {
+    console.log(value);
     if (value === true && title !== null && time !== null && date !== null && details !== null) {
-      setCheckbox(true);
       setUrgency({
         title,
         date,
@@ -66,7 +66,6 @@ const FormBooking = () => {
         details,
       });
     } else if (value === false) {
-      setCheckbox(false);
       setUrgency({
         title: '',
         date: '',
@@ -167,8 +166,8 @@ const FormBooking = () => {
                           </span>
                           <input
                             type="checkbox"
-                            value={checkbox}
                             id="urgent"
+                            defaultChecked={checkbox}
                             className=" ml-4"
                             onChange={(element) => handleCheckBox(element.target.checked,
                               e.title, e.time, e.date, e.details)}

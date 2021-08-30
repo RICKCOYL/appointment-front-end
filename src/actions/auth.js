@@ -4,7 +4,7 @@ import {
   SIGN_UP, SIGN_IN,
 } from './action';
 
-const apiUrl = 'http://localhost:3000/';
+const apiUrl = 'https://appoinment-api.herokuapp.com';
 
 export const createUser = (user) => (dispatch) => {
   axios
