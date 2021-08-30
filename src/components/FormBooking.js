@@ -21,7 +21,7 @@ const FormBooking = () => {
   const auth = useSelector((state) => state.authReducer);
 
   const bookings = useSelector((state) => state.userObject);
-  bookings.sort();
+  console.log(bookings);
 
   const [state, setState] = useState({
     title: '',
@@ -147,8 +147,9 @@ const FormBooking = () => {
                 <p className="info">* To add Appointments to your urgent list please make sure the checkbox is checked</p>
                 <div id="bookings-grid">
                   <div className="bookings">
+
                     { bookings === undefined ? <div>Loading...</div>
-                      : bookings.map((e) => (
+                      : bookings && bookings.map((e) => (
                         <div className="booking-cta" key={e.id}>
                           <h4>{e.title}</h4>
                           <div>{`DATE: ${e.date} & ${e.time}`}</div>

@@ -4,7 +4,7 @@ import {
   SIGN_UP, SIGN_IN,
 } from './action';
 
-const apiUrl = 'https://appoinment-api.herokuapp.com';
+const apiUrl = 'http://localhost:3000/';
 
 export const createUser = (user) => (dispatch) => {
   axios
@@ -33,6 +33,9 @@ export const login = (cred) => (dispatch) => {
       dispatch({
         type: SIGN_IN,
         token: token.data.auth_token,
+      });
+      toast.success('You are logged in', {
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
     })
     .catch((error) => {

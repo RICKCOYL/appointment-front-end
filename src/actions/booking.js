@@ -25,6 +25,7 @@ export const addBook = (book) => (dispatch) => {
         type: ADD_BOOK,
         token: token.data,
       });
+      toast.success('Booking added successfully');
     })
     .catch((error) => {
       toast.error(error.response?.data, {
@@ -37,12 +38,13 @@ export const getBooks = () => (dispatch) => {
   axios
     .get(`${apiUrl}listings`, setHeaders())
     .then((books) => {
+      console.log(books);
       dispatch({
         type: GET_BOOKS,
-        books: books.data,
+        books,
       });
     })
-    .catch((error) => error.response.data);
+    .catch((error) => console.log(error));
 };
 
 export const removeBook = (bookId) => (dispatch) => {
