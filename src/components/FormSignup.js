@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NotificationContainer } from 'react-notifications';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../actions/auth';
 
@@ -29,6 +30,7 @@ const FormSignup = () => {
   return (
     <div id="login-box">
       <h3>Sign Up</h3>
+      <NotificationContainer />
       <form className="left" onSubmit={handleSubmit}>
         <input
           type="text"

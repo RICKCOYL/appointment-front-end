@@ -23,8 +23,7 @@ const Navbar = () => {
         : (
           <nav className="second-nav">
             <div>
-              <Link id="home" to="/">Appointment List</Link>
-              <Link id="profile" to="/urgent-list">Urgent List</Link>
+              <p id="home">Appointment List</p>
             </div>
 
             <div id="nameandbtn">

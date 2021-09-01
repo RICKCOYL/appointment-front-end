@@ -3,7 +3,6 @@ import FormBooking from './components/FormBooking';
 import FormSignup from './components/FormSignup';
 import FormLogin from './components/FormLogin';
 import Navbar from './components/Navbar';
-import UrgentList from './components/UrgentList';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
           <Route exact path="/" component={FormSignup} />
           <Route exact path="/login" component={FormLogin} />
           <Route exact path="/booking" component={FormBooking} />
-          <Route exact path="/urgent-list" component={UrgentList} />
 
         </Switch>
       </Router>

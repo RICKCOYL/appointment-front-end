@@ -1,31 +1,23 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { ToastContainer } from 'react-toastify';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+
 import {
-  addBook, getBooks, removeBook, urgencyState, getUrgency,
+  addBook, getBooks, removeBook,
 } from '../actions/booking';
-import urgentImg from '../assests/img/urgent.png';
 
 const FormBooking = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getBooks());
-    dispatch(getUrgency());
   }, []);
 
   const auth = useSelector((state) => state.authReducer);
 
   const bookings = useSelector((state) => state.userObject);
 
-  // return a list of books if booking.map((book) => book.user_id) === auth.id
   const userBookings = bookings.filter((book) => book.user_id === auth.id);
-
-  console.log(userBookings);
 
   const [state, setState] = useState({
     title: '',
@@ -33,15 +25,6 @@ const FormBooking = () => {
     time: '',
     details: 'Dr. Will Halstead',
   });
-
-  const [urgency, setUrgency] = useState({
-    title: '',
-    date: '',
-    time: '',
-    details: '',
-  });
-
-  const [checkbox, setCheckbox] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,31 +43,11 @@ const FormBooking = () => {
     dispatch(removeBook(id));
   };
 
-  const handleCheckBox = (value, title, time, date, details) => {
-    console.log(value);
-    if (value === true && title !== null && time !== null && date !== null && details !== null) {
-      setUrgency({
-        title,
-        date,
-        time,
-        details,
-      });
-    } else if (value === false) {
-      setUrgency({
-        title: '',
-        date: '',
-        time: '',
-        details: '',
-      });
-    }
-
-    dispatch(urgencyState(urgency));
-  };
-
   if (!auth.id) return <Redirect to="/login" />;
 
   return (
     <div className="section">
+
       {!auth.id ? <div>Loading</div> : (
         <div className="section-center">
           <div className="container">
@@ -150,7 +113,6 @@ const FormBooking = () => {
                 <p className="info">* To add Appointments to your urgent list please make sure the checkbox is checked</p>
                 <div id="bookings-grid">
                   <div className="bookings">
-
                     { userBookings === undefined ? <div>Loading...</div>
                       : userBookings.map((e) => (
                         <div className="booking-cta" key={e.id}>
@@ -168,14 +130,6 @@ const FormBooking = () => {
                               onClick={() => handleDelete(e.id)}
                             />
                           </span>
-                          <input
-                            type="checkbox"
-                            id="urgent"
-                            defaultChecked={checkbox}
-                            className=" ml-4"
-                            onChange={(element) => handleCheckBox(element.target.checked,
-                              e.title, e.time, e.date, e.details)}
-                          />
                         </div>
 
                       ))}

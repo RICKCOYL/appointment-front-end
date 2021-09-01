@@ -21,7 +21,7 @@ To build this application I used:
 
 ## Live-Demo
 
-[The live demo link](https://hungry-jones-a19c2a.netlify.app/)
+[The live demo link](https://vigilant-hamilton-511516.netlify.app/)
 
 ## Link for back-end repository
 

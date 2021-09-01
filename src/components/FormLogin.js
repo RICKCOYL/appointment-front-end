@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { NotificationContainer } from 'react-notifications';
 import { Redirect } from 'react-router-dom';
 import { login } from '../actions/auth';
 
@@ -30,6 +31,8 @@ const FormLogin = () => {
 
       <>
         <h3>Log in</h3>
+        <NotificationContainer />
+
         <form className="left" onSubmit={handleSubmit}>
           <input
             type="email"

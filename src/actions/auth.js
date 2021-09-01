@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */import axios from 'axios';
-import { toast } from 'react-toastify';
+import { NotificationManager } from 'react-notifications';
 import {
   SIGN_UP, SIGN_IN,
 } from './action';
 
-const apiUrl = 'http://localhost:3000';
+const apiUrl = 'https://appoinment-api.herokuapp.com';
 
 export const createUser = (user) => (dispatch) => {
   axios
@@ -16,11 +16,10 @@ export const createUser = (user) => (dispatch) => {
         type: SIGN_UP,
         token: token.data.auth_token,
       });
+      NotificationManager.success('Successfully signed up');
     })
     .catch((error) => {
-      toast.error(error.response?.data, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      NotificationManager.error(error.response.data.message);
     });
 };
 
@@ -34,13 +33,9 @@ export const login = (cred) => (dispatch) => {
         type: SIGN_IN,
         token: token.data.auth_token,
       });
-      toast.success('You are logged in', {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      NotificationManager.success('Successfully logged in');
     })
     .catch((error) => {
-      toast.error(error.response?.data, {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+      NotificationManager.error(error.response.data.message);
     });
 };
