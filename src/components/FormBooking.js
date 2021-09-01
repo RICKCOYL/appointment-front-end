@@ -21,7 +21,11 @@ const FormBooking = () => {
   const auth = useSelector((state) => state.authReducer);
 
   const bookings = useSelector((state) => state.userObject);
-  console.log(bookings);
+
+  // return a list of books if booking.map((book) => book.user_id) === auth.id
+  const userBookings = bookings.filter((book) => book.user_id === auth.id);
+
+  console.log(userBookings);
 
   const [state, setState] = useState({
     title: '',
@@ -147,8 +151,8 @@ const FormBooking = () => {
                 <div id="bookings-grid">
                   <div className="bookings">
 
-                    { bookings === undefined ? <div>Loading...</div>
-                      : bookings.map((e) => (
+                    { userBookings === undefined ? <div>Loading...</div>
+                      : userBookings.map((e) => (
                         <div className="booking-cta" key={e.id}>
                           <h4>{e.title}</h4>
                           <div>{`DATE: ${e.date} & ${e.time}`}</div>
