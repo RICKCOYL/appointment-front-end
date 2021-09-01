@@ -110,7 +110,6 @@ const FormBooking = () => {
                 </form>
               </div>
               <div>
-                <p className="info">* To add Appointments to your urgent list please make sure the checkbox is checked</p>
                 <div id="bookings-grid">
                   <div className="bookings">
                     { userBookings === undefined ? <div>Loading...</div>
