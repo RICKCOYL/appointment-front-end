@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Appointment App (front end)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+In this application, I have an appointment app. The user can choose from a list of 
+doctors and choose a date and time to make an appointment with the doctor at that time.
 
-### `yarn start`
+To build this application I used:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Javascript ES6;
+- Html/CSS;
+- React;
+- Redux;
+- React-Redux;
+- Jest;
+- Create React App;
+- React Hooks;
+- React Router
+- Linters ( eslint and stylelint)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Live-Demo
 
-### `yarn test`
+[The live demo link](https://vigorous-tereshkova-da27c4.netlify.app/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Link for back-end repository
 
-### `yarn build`
+[Link for back-end repository](https://github.com/RICKCOYL/appointment-back-end.git)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![screenshot1](./src/assests/img/img.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Log in, log out and sign up
+- Create appointments;
+- Show the list of the appointments of the user;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Getting started (Feature)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To get a local copy of the repository please run the following commands on your terminal:
 
-## Learn More
+```
+$ git clone https://github.com/RICKCOYL/appointment-front-end.git
+$ cd appointment-front-end
+$ git checkout feature
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Launch the application
 
-### Code Splitting
+After making the local copy of the repository:
+- get inside the repository folder;
+- setup the dependencies of the project: in the terminal run: ```npm install```
+- enter the command: ```npm start``` to start the server in localhost.
+- then you get the application in the localhost in your web browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Test the application
 
-### Analyzing the Bundle Size
+After making the local copy of the repository:
+- get inside the repository folder;
+- setup the dependencies of the project: in the terminal run: ```npm install```
+- enter the command: ```npm run test``` to test the application.
+- then you get the application tested.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+In this application I test the components using the snapshots .
 
-### Making a Progressive Web App
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+👤 **RICK OBURU**
 
-### Advanced Configuration
+- Github: [@RICKCOYL](https://github.com/RICKCOYL)
+- Twitter: [@rickcoyl](https://twitter.com/rickcoyl)
+- Linkedin: [Rick Oburu](https://www.linkedin.com/in/rickoburu/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🤝 Contributing
 
-### Deployment
+Contributions, issues ,and feature requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Show your support
 
-### `yarn build` fails to minify
+Give an ⭐️ if you like this project!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Acknowledgments
+
+- Hat tip to [stackoverflow](https://stackoverflow.com) community.
+- Hat tip to [Microverse](https://www.microverse.org/) TSE for Code Review
+- Hat tip to [Create React App](https://github.com/facebook/create-react-app)
+- Hat tip to [Heroku](https://www.heroku.com/)
+- Hat tip to anyone whose code was used
+
+## Issues
+If you would like to report an issue [the link](https://github.com/RICKCOYL/appointment-front-end/issues)
+
+## 📝 License
+
+All source code is available jointly under the MIT License.
+See [MIT licence](./LICENSE.md) for details.
