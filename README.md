@@ -21,7 +21,7 @@ To build this application I used:
 
 ## Live-Demo
 
-[The live demo link](https://ecstatic-tesla-fcbdf5.netlify.app/)
+[The live demo link](https://sharp-kowalevski-6be4f1.netlify.app/)
 
 ## Link for back-end repository
 
