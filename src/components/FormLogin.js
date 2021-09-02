@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { NotificationContainer } from 'react-notifications';
 import { Redirect } from 'react-router-dom';
@@ -50,7 +51,7 @@ const FormLogin = () => {
           />
 
           <input className="signup-btn" type="submit" name="signup_submit" value="Login" />
-          <a href="/">Dont have an account</a>
+          <Link to="/">Dont have an account</Link>
         </form>
       </>
     </div>
