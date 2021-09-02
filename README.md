@@ -21,7 +21,7 @@ To build this application I used:
 
 ## Live-Demo
 
-[The live demo link](https://vigorous-tereshkova-da27c4.netlify.app/)
+[The live demo link](https://ecstatic-tesla-fcbdf5.netlify.app/)
 
 ## Link for back-end repository
 
