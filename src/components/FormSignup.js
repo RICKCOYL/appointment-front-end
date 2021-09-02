@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { NotificationContainer } from 'react-notifications';
-import { Redirect } from 'react-router-dom';
+import spinner from '../assests/img/whitebgspinner.svg';
+
 import { createUser } from '../actions/auth';
 
 const FormSignup = () => {
@@ -12,12 +13,15 @@ const FormSignup = () => {
     password: '',
   });
 
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.authReducer);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createUser(state));
+    setLoading(true);
 
     setState({
       username: '',
@@ -32,35 +36,44 @@ const FormSignup = () => {
     <div id="login-box">
       <h3>Sign Up</h3>
       <NotificationContainer />
-      <form className="left" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          required
-          onChange={(e) => setState({ ...state, username: e.target.value })}
-          value={state.username}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail"
-          required
-          onChange={(e) => setState({ ...state, email: e.target.value })}
-          value={state.email}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-          onChange={(e) => setState({ ...state, password: e.target.value })}
-          value={state.password}
-        />
 
-        <input className="signup-btn" type="submit" name="signup_submit" value="Sign up" />
-        <Link to="/login">Already have an account</Link>
-      </form>
+      {loading ? (
+        <div className="div-loader">
+          <div><img id="loader" src={spinner} alt="" /></div>
+          <div>Signing Up....</div>
+        </div>
+      )
+        : (
+          <form className="left" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+              onChange={(e) => setState({ ...state, username: e.target.value })}
+              value={state.username}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              required
+              onChange={(e) => setState({ ...state, email: e.target.value })}
+              value={state.email}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={(e) => setState({ ...state, password: e.target.value })}
+              value={state.password}
+            />
+
+            <input className="signup-btn" type="submit" name="signup_submit" value="Sign up" />
+            <Link to="/login">Already have an account</Link>
+          </form>
+        )}
     </div>
   );
 };

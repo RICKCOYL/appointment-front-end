@@ -36,6 +36,6 @@ export const login = (cred) => (dispatch) => {
       NotificationManager.success('Successfully logged in');
     })
     .catch((error) => {
-      NotificationManager.error(error.response.data.message);
+      NotificationManager.error(error);
     });
 };
