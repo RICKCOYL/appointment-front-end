@@ -31,6 +31,7 @@ const FormSignup = () => {
   };
 
   if (auth.id) return <Redirect to="/booking" />;
+  if (!auth.id) return <Redirect to="/login" />;
 
   return (
     <div id="login-box">
