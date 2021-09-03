@@ -111,6 +111,11 @@ input[type="checkbox"] {
   margin: auto;
 }
 
+#booking-loader {
+  width: 50px;
+  margin: auto;
+}
+
 @media (min-width: 768px) {
   #login-box form input {
     width: 50%;

@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import spinner from '../assests/img/whitebgspinner.svg';
 
 import {
   addBook, getBooks, removeBook,
 } from '../actions/booking';
 
 const FormBooking = () => {
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
+    setLoading(true);
     dispatch(getBooks());
+    setLoading(false);
   }, []);
 
   const auth = useSelector((state) => state.authReducer);
@@ -30,7 +35,6 @@ const FormBooking = () => {
     e.preventDefault();
 
     dispatch(addBook(state));
-
     setState({
       title: '',
       date: '',
@@ -104,14 +108,16 @@ const FormBooking = () => {
                   </select>
                 </div>
                 <div className="form-btn">
-                  <button type="submit" className="submit-btn">Book</button>
+                  <button type="submit" className="submit-btn">
+                    Book
+                  </button>
                 </div>
               </form>
             </div>
             <div>
               <div id="bookings-grid">
                 <div className="bookings">
-                  { userBookings === undefined ? <div>Loading...</div>
+                  { loading ? <div><img id="booking-loader" src={spinner} alt="" /></div>
                     : userBookings.map((e) => (
                       <div className="booking-cta" key={e.id}>
                         <h4>{e.title}</h4>
