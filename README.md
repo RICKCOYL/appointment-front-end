@@ -21,7 +21,7 @@ To build this application I used:
 
 ## Live-Demo
 
-[The live demo link](https://reverent-agnesi-e659b2.netlify.app/)
+[The live demo link](https://brave-meninsky-eec89c.netlify.app/)
 
 ## Link for back-end repository
 
